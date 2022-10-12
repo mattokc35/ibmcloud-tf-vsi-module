@@ -30,7 +30,7 @@ resource "ibm_is_instance" "testacc_vpc" {
 
   primary_network_interface {
     subnet = var.subnet
-    primary_ipv4_address = "10.0.1.6"
+    primary_ipv4_address = "10.0.1.7"
     allow_ip_spoofing = true
   }
 
@@ -46,9 +46,9 @@ resource "ibm_is_instance" "testacc_vpc" {
 
   //User can configure timeouts
   timeouts {
-    create = "15m"
-    update = "15m"
-    delete = "15m"
+    create = "5m"
+    update = "5m"
+    delete = "5m"
   }
 }
 // primary_ipv4_address deprecation 
