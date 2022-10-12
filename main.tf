@@ -10,7 +10,7 @@ terraform {
 # Configure the IBM Provider
 provider "ibm" {
   region = "${var.ibm_region}"
-  ibmcloud_api_key = var.ibmcloud_api_key
+  ibmcloud_api_key = "${var.ibmcloud_api_key}"
 }
 
 
@@ -18,14 +18,14 @@ provider "ibm" {
 //VSI
 
 resource "ibm_is_ssh_key" "testacc_vpc" {
-  name       = "testacc-vpc-ssh"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCKVmnMOlHKcZK8tpt3MP1lqOLAcqcJzhsvJcjscgVERRN7/9484SOBJ3HSKxxNG5JN8owAjy5f9yYwcUg+JaUVuytn5Pv3aeYROHGGg+5G346xaq3DAwX6Y5ykr2fvjObgncQBnuU5KHWCECO/4h8uWuwh/kfniXPVjFToc+gnkqA+3RKpAecZhFXwfalQ9mMuYGFxn+fwn8cYEApsJbsEmb0iJwPiZ5hjFC8wREuiTlhPHDgkBLOiycd20op2nXzDbHfCHInquEe/gYxEitALONxm0swBOwJZwlTDOB7C6y2dzlrtxr1L59m7pCkWI4EtTRLvleehBoj3u7jB4usR"
+  name       = "${var.ssh_key_name}"
+  public_key = "${var.ssh_key_public_key}"
 }
 
 resource "ibm_is_instance" "testacc_vpc" {
-  name    = "testacc-vpc-instance"
-  image   = "r006-d806e4b3-ac71-4274-b4e2-8efc5bb75393"
-  profile = "bx2-2x8"
+  name    = "${var.vsi_name}"
+  image   = "${var.vsi_image_id}"
+  profile = "${var.profile}"
   metadata_service_enabled  = false
 
   primary_network_interface {
