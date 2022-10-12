@@ -29,18 +29,18 @@ resource "ibm_is_instance" "testacc_vpc" {
   metadata_service_enabled  = false
 
   primary_network_interface {
-    subnet = "${var.subnet}"
+    subnet = var.subnet
     primary_ipv4_address = "10.0.1.6"
     allow_ip_spoofing = true
   }
 
   network_interfaces {
     name   = "eth1"
-    subnet = "${var.subnet}"
+    subnet = var.subnet
     allow_ip_spoofing = false
   }
 
-  vpc  = "${var.vpc}"
+  vpc  = var.vpc
   zone = "${var.ibm_region}-1"
   keys = [ibm_is_ssh_key.testacc_vpc.id]
 
