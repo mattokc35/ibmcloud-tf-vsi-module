@@ -10,7 +10,7 @@ terraform {
 # Configure the IBM Provider
 provider "ibm" {
   region = "${var.ibm_region}"
-  ibmcloud_api_key = "${var.ibmcloud_api_key}"
+  ibmcloud_api_key = var.ibmcloud_api_key
 }
 
 
@@ -25,7 +25,7 @@ resource "ibm_is_ssh_key" "testacc_vpc" {
 resource "ibm_is_instance" "testacc_vpc" {
   name    = "${var.vsi_name}"
   image   = "${var.vsi_image_id}"
-  profile = "${var.profile}"
+  profile = "${var.vsi_profile}"
   metadata_service_enabled  = false
 
   primary_network_interface {
