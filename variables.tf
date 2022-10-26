@@ -24,7 +24,7 @@ variable "vpc" {
     type = string
 }
 
-variable "vsi_image_id" {
+variable "image_id" {
     type = string
 }
 
