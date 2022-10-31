@@ -24,7 +24,7 @@ resource "ibm_is_ssh_key" "testacc_vpc" {
 
 resource "ibm_is_instance" "testacc_vpc" {
   name    = "${var.vsi_name}"
-  image   = "${var.vsi_image_id}"
+  image   = "${var.image_id}"
   profile = "${var.vsi_profile}"
   metadata_service_enabled  = false
 
