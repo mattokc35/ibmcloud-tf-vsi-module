@@ -35,3 +35,7 @@ variable "vsi_name" {
 variable "vsi_profile" {
     type = string
 }
+
+output "vsi_id" {
+    value = ibm_is_instance.testacc_vpc.id
+}
